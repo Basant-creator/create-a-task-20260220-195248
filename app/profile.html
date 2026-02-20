@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMaster Pro - Profile</title>
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container nav-container">
+            <a href="../public/index.html" class="logo">
+                <span class="logo-icon"><i class="fas fa-check-double"></i></span>
+                TaskMaster Pro
+            </a>
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li><a href="../public/index.html" class="nav-link" data-page="index">Home</a></li>
+                    <li><a href="dashboard.html" class="nav-link" data-page="dashboard">Dashboard</a></li>
+                    <li><a href="profile.html" class="nav-link current-page" data-page="profile">Profile</a></li>
+                    <li><a href="settings.html" class="nav-link" data-page="settings">Settings</a></li>
+                    <li class="auth-links">
+                        <a href="../public/login.html" class="btn btn-secondary nav-login">Login</a>
+                        <a href="../public/signup.html" class="btn btn-primary nav-signup">Signup</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-layout">
+        <aside class="sidebar">
+            <div class="user-profile-summary">
+                <div class="profile-picture-placeholder">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <h3 id="sidebarUserName">User Name</h3>
+                <p id="sidebarUserEmail">user@example.com</p>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html" class="sidebar-link"><i class="fas fa-columns"></i> Dashboard</a></li>
+                    <li><a href="profile.html" class="sidebar-link active"><i class="fas fa-user"></i> Profile</a></li>
+                    <li><a href="settings.html" class="sidebar-link"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li><a href="#" id="logoutButtonProfile" class="sidebar-link logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <section class="main-content">
+            <div class="container">
+                <h1>Profile Settings</h1>
+                <div class="profile-section card">
+                    <h2>Personal Information</h2>
+                    <form id="profileForm" class="form-layout">
+                        <div class="form-group">
+                            <label for="profileName">Full Name</label>
+                            <input type="text" id="profileName" name="name" required>
+                            <p class="error-message" id="profileNameError"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="profileEmail">Email Address</label>
+                            <input type="email" id="profileEmail" name="email" required readonly>
+                            <p class="error-message" id="profileEmailError"></p>
+                        </div>
+                        <!-- Profile picture upload placeholder -->
+                        <div class="form-group profile-picture-group">
+                            <label>Profile Picture</label>
+                            <div class="profile-picture-upload">
+                                <div class="profile-picture-preview">
+                                    <i class="fas fa-user-circle fa-5x"></i>
+                                </div>
+                                <input type="file" id="profilePicture" accept="image/*">
+                                <label for="profilePicture" class="btn btn-secondary">Upload New Picture</label>
+                                <p class="help-text">Max file size 2MB</p>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" id="saveProfileButton">
+                                <span id="saveProfileText">Save Changes</span>
+                                <i class="fas fa-spinner fa-spin loading-spinner" id="saveProfileSpinner" style="display: none;"></i>
+                            </button>
+                            <button type="button" class="btn btn-secondary" id="cancelProfileButton">Cancel</button>
+                        </div>
+                        <div class="form-message success-message" id="profileSuccess" style="display: none;">Profile updated successfully!</div>
+                        <div class="form-message error-message" id="profileError" style="display: none;"></div>
+                    </form>
+                </div>
+
+                <div class="profile-section card margin-top-large">
+                    <h2>Change Password</h2>
+                    <form id="passwordForm" class="form-layout">
+                        <div class="form-group">
+                            <label for="currentPassword">Current Password</label>
+                            <input type="password" id="currentPassword" name="currentPassword" required>
+                            <p class="error-message" id="currentPasswordError"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="newPassword">New Password</label>
+                            <input type="password" id="newPassword" name="newPassword" required>
+                            <p class="error-message" id="newPasswordError"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmNewPassword">Confirm New Password</label>
+                            <input type="password" id="confirmNewPassword" name="confirmNewPassword" required>
+                            <p class="error-message" id="confirmNewPasswordError"></p>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" id="changePasswordButton">
+                                <span id="changePasswordText">Change Password</span>
+                                <i class="fas fa-spinner fa-spin loading-spinner" id="changePasswordSpinner" style="display: none;"></i>
+                            </button>
+                            <button type="button" class="btn btn-secondary" id="cancelPasswordButton">Cancel</button>
+                        </div>
+                        <div class="form-message success-message" id="passwordSuccess" style="display: none;">Password changed successfully!</div>
+                        <div class="form-message error-message" id="passwordError" style="display: none;"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../public/index.html" class="logo">
+                        <span class="logo-icon"><i class="fas fa-check-double"></i></span>
+                        TaskMaster Pro
+                    </a>
+                    <p>&copy; 2023 TaskMaster Pro. All rights reserved.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../public/index.html">Home</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="settings.html">Settings</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <script src="../public/js/main.js"></script>
+    <script src="js/dashboard.js"></script> <!-- Reusing dashboard.js for profile/settings page auth/user data -->
+</body>
+</html>
