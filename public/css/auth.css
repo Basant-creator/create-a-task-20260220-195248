@@ -1,0 +1,191 @@
+/* Auth Specific Styles (inherits from style.css for variables and general typography) */
+
+body {
+    background-color: var(--light-gray);
+    display: flex; /* Use flexbox to center content */
+    flex-direction: column;
+    min-height: 100vh; /* Ensure body takes full viewport height */
+}
+
+main.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1; /* Allow auth container to grow and push footer down */
+    padding: 40px 20px; /* Add padding for smaller screens */
+}
+
+.auth-card {
+    background-color: var(--white-color);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    max-width: 450px;
+    width: 100%;
+    text-align: center;
+    margin: auto; /* Center card horizontally within its flex container */
+}
+
+.auth-title {
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+.auth-form {
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1em;
+    color: var(--text-color);
+    transition: border-color var(--transition-speed);
+}
+
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus,
+.form-group input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2); /* primary-color with transparency */
+}
+
+.error-message {
+    color: var(--error-color);
+    font-size: 0.85em;
+    margin-top: 5px;
+    min-height: 1em; /* Reserve space to prevent layout shift */
+    display: block;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 0.9em;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+}
+
+.remember-me input[type="checkbox"] {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.remember-me label {
+    margin-bottom: 0; /* Override form-group label margin */
+    font-weight: normal;
+    color: var(--text-color-light);
+}
+
+.forgot-password {
+    color: var(--primary-color);
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.terms-acceptance {
+    display: flex;
+    align-items: flex-start; /* Align checkbox and text nicely */
+    font-size: 0.9em;
+    margin-bottom: 20px;
+}
+
+.terms-acceptance input[type="checkbox"] {
+    margin-right: 8px;
+    margin-top: 4px; /* Align checkbox with text baseline */
+    cursor: pointer;
+}
+
+.terms-acceptance label {
+    font-weight: normal;
+    color: var(--text-color-light);
+}
+
+.terms-acceptance label a {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.terms-acceptance label a:hover {
+    color: var(--secondary-color);
+}
+
+.auth-message {
+    padding: 10px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.auth-message.error-message {
+    background-color: rgba(220, 53, 69, 0.1); /* error-color with transparency */
+    color: var(--error-color);
+    border: 1px solid var(--error-color);
+}
+
+.auth-message.success-message {
+    background-color: rgba(40, 167, 69, 0.1); /* success-color with transparency */
+    color: var(--success-color);
+    border: 1px solid var(--success-color);
+}
+
+
+.auth-switch {
+    margin-top: 30px;
+    color: var(--text-color-light);
+}
+
+.auth-switch a {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.auth-switch a:hover {
+    color: var(--secondary-color);
+}
+
+.loading-spinner {
+    margin-left: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 30px 20px;
+        margin: 20px;
+    }
+    .auth-title {
+        font-size: 1.8em;
+    }
+    .form-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
