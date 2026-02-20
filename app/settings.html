@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMaster Pro - Settings</title>
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container nav-container">
+            <a href="../public/index.html" class="logo">
+                <span class="logo-icon"><i class="fas fa-check-double"></i></span>
+                TaskMaster Pro
+            </a>
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li><a href="../public/index.html" class="nav-link" data-page="index">Home</a></li>
+                    <li><a href="dashboard.html" class="nav-link" data-page="dashboard">Dashboard</a></li>
+                    <li><a href="profile.html" class="nav-link" data-page="profile">Profile</a></li>
+                    <li><a href="settings.html" class="nav-link current-page" data-page="settings">Settings</a></li>
+                    <li class="auth-links">
+                        <a href="../public/login.html" class="btn btn-secondary nav-login">Login</a>
+                        <a href="../public/signup.html" class="btn btn-primary nav-signup">Signup</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-layout">
+        <aside class="sidebar">
+            <div class="user-profile-summary">
+                <div class="profile-picture-placeholder">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <h3 id="sidebarUserName">User Name</h3>
+                <p id="sidebarUserEmail">user@example.com</p>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html" class="sidebar-link"><i class="fas fa-columns"></i> Dashboard</a></li>
+                    <li><a href="profile.html" class="sidebar-link"><i class="fas fa-user"></i> Profile</a></li>
+                    <li><a href="settings.html" class="sidebar-link active"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li><a href="#" id="logoutButtonSettings" class="sidebar-link logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <section class="main-content">
+            <div class="container">
+                <h1>Application Settings</h1>
+                
+                <div class="settings-section card">
+                    <h2>General Preferences</h2>
+                    <form id="preferencesForm" class="form-layout">
+                        <div class="form-group">
+                            <label for="themeSelect">Theme</label>
+                            <select id="themeSelect" name="theme">
+                                <option value="light">Light (Default)</option>
+                                <option value="dark">Dark</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="notificationToggle">Email Notifications</label>
+                            <input type="checkbox" id="notificationToggle" name="notifications" checked>
+                            <span class="toggle-switch"></span>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Save Preferences</button>
+                            <button type="button" class="btn btn-secondary">Reset</button>
+                        </div>
+                        <div class="form-message success-message" id="preferencesSuccess" style="display: none;">Preferences saved!</div>
+                        <div class="form-message error-message" id="preferencesError" style="display: none;"></div>
+                    </form>
+                </div>
+
+                <div class="settings-section card margin-top-large">
+                    <h2>Account Management</h2>
+                    <div class="form-layout">
+                        <div class="form-group">
+                            <label>Delete Account</label>
+                            <p class="help-text">Permanently delete your account and all associated data. This action cannot be undone.</p>
+                            <button type="button" class="btn btn-danger" id="deleteAccountButton">Delete My Account</button>
+                        </div>
+                    </div>
+                    <div class="form-message error-message" id="deleteAccountError" style="display: none;"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../public/index.html" class="logo">
+                        <span class="logo-icon"><i class="fas fa-check-double"></i></span>
+                        TaskMaster Pro
+                    </a>
+                    <p>&copy; 2023 TaskMaster Pro. All rights reserved.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../public/index.html">Home</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="settings.html">Settings</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <script src="../public/js/main.js"></script>
+    <script src="js/dashboard.js"></script> <!-- Reusing dashboard.js for profile/settings page auth/user data -->
+</body>
+</html>
