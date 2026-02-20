@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMaster Pro - Sign Up</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon"><i class="fas fa-check-double"></i></span>
+                TaskMaster Pro
+            </a>
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link" data-page="index">Home</a></li>
+                    <li><a href="app/dashboard.html" class="nav-link" data-page="dashboard">Dashboard</a></li>
+                    <li><a href="app/profile.html" class="nav-link" data-page="profile">Profile</a></li>
+                    <li><a href="app/settings.html" class="nav-link" data-page="settings">Settings</a></li>
+                    <li class="auth-links">
+                        <a href="login.html" class="btn btn-secondary nav-login">Login</a>
+                        <a href="signup.html" class="btn btn-primary nav-signup current-page">Signup</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main class="auth-container">
+        <div class="auth-card">
+            <h2 class="auth-title">Join TaskMaster Pro</h2>
+            <form id="signupForm" class="auth-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="John Doe" required>
+                    <p class="error-message" id="nameError"></p>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    <p class="error-message" id="emailError"></p>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Min. 6 characters" required>
+                    <p class="error-message" id="passwordError"></p>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter password" required>
+                    <p class="error-message" id="confirmPasswordError"></p>
+                </div>
+                <div class="form-options">
+                    <div class="terms-acceptance">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">I agree to the <a href="#">Terms of Service</a></label>
+                        <p class="error-message" id="termsError"></p>
+                    </div>
+                </div>
+                <div class="auth-message error-message" id="generalError"></div>
+                <button type="submit" class="btn btn-primary btn-block" id="signupButton">
+                    <span id="buttonText">Sign Up</span>
+                    <i class="fas fa-spinner fa-spin loading-spinner" id="loadingSpinner" style="display: none;"></i>
+                </button>
+            </form>
+            <p class="auth-switch">Already have an account? <a href="login.html">Login</a></p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <span class="logo-icon"><i class="fas fa-check-double"></i></span>
+                        TaskMaster Pro
+                    </a>
+                    <p>&copy; 2023 TaskMaster Pro. All rights reserved.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="app/dashboard.html">Dashboard</a></li>
+                        <li><a href="app/profile.html">Profile</a></li>
+                        <li><a href="app/settings.html">Settings</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>
