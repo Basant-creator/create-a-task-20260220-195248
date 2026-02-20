@@ -1,0 +1,58 @@
+-- This project uses MongoDB as its primary database.
+-- Therefore, an SQL schema file is not directly applicable.
+-- Data modeling is handled by Mongoose schemas in backend/models/User.js,
+-- where tasks are stored as subdocuments within the User collection.
+
+-- If this project were to use a relational database (e.g., PostgreSQL, MySQL),
+-- a potential schema might look like this:
+
+-- Users Table
+-- CREATE TABLE users (
+--     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+--     name VARCHAR(50) NOT NULL,
+--     email VARCHAR(100) UNIQUE NOT NULL,
+--     password_hash VARCHAR(255) NOT NULL,
+--     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+--     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+-- );
+
+-- -- Tasks Table
+-- CREATE TABLE tasks (
+--     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+--     user_id UUID NOT NULL,
+--     title VARCHAR(100) NOT NULL,
+--     description TEXT,
+--     status VARCHAR(20) DEFAULT 'pending' NOT NULL CHECK (status IN ('pending', 'completed')),
+--     due_date DATE,
+--     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+--     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+--     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+-- );
+
+-- -- Indexes for performance
+-- CREATE INDEX idx_users_email ON users (email);
+-- CREATE INDEX idx_tasks_user_id ON tasks (user_id);
+-- CREATE INDEX idx_tasks_status ON tasks (status);
+
+-- Note: In MongoDB, the equivalent structure is a `User` collection
+-- where each user document contains an array of `Task` subdocuments.
+-- Example Mongoose Schema representation:
+--
+-- // User.js
+-- const TaskSchema = new mongoose.Schema({
+--     title: String,
+--     description: String,
+--     status: { type: String, enum: ['pending', 'completed'], default: 'pending' },
+--     dueDate: Date,
+--     createdAt: { type: Date, default: Date.now },
+--     updatedAt: { type: Date, default: Date.now }
+-- });
+--
+-- const UserSchema = new mongoose.Schema({
+--     name: String,
+--     email: String,
+--     password: String, // Hashed
+--     tasks: [TaskSchema], // Array of subdocuments
+--     createdAt: { type: Date, default: Date.now },
+--     updatedAt: { type: Date, default: Date.now }
+-- });
