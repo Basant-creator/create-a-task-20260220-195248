@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMaster Pro - Dashboard</title>
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container nav-container">
+            <a href="../public/index.html" class="logo">
+                <span class="logo-icon"><i class="fas fa-check-double"></i></span>
+                TaskMaster Pro
+            </a>
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li><a href="../public/index.html" class="nav-link" data-page="index">Home</a></li>
+                    <li><a href="dashboard.html" class="nav-link current-page" data-page="dashboard">Dashboard</a></li>
+                    <li><a href="profile.html" class="nav-link" data-page="profile">Profile</a></li>
+                    <li><a href="settings.html" class="nav-link" data-page="settings">Settings</a></li>
+                    <li class="auth-links">
+                        <a href="../public/login.html" class="btn btn-secondary nav-login">Login</a>
+                        <a href="../public/signup.html" class="btn btn-primary nav-signup">Signup</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-layout">
+        <aside class="sidebar">
+            <div class="user-profile-summary">
+                <div class="profile-picture-placeholder">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <h3 id="userName">User Name</h3>
+                <p id="userEmail">user@example.com</p>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html" class="sidebar-link active"><i class="fas fa-columns"></i> Dashboard</a></li>
+                    <li><a href="profile.html" class="sidebar-link"><i class="fas fa-user"></i> Profile</a></li>
+                    <li><a href="settings.html" class="sidebar-link"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li><a href="#" id="logoutButton" class="sidebar-link logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <section class="main-content">
+            <div class="container">
+                <h1 class="greeting">Hello, <span id="dashboardUserName">User!</span></h1>
+                
+                <div class="dashboard-stats-grid">
+                    <div class="stat-card">
+                        <h3>Total Tasks</h3>
+                        <p id="totalTasksCount">0</p>
+                        <i class="fas fa-list-check stat-icon"></i>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Pending Tasks</h3>
+                        <p id="pendingTasksCount">0</p>
+                        <i class="fas fa-hourglass-half stat-icon"></i>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Completed Tasks</h3>
+                        <p id="completedTasksCount">0</p>
+                        <i class="fas fa-check-circle stat-icon"></i>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <h2>Quick Actions</h2>
+                    <button class="btn btn-primary" id="openAddTaskModal"><i class="fas fa-plus"></i> Add New Task</button>
+                    <!-- Other quick actions could go here -->
+                </div>
+
+                <div class="task-list-section">
+                    <h2>Your Tasks</h2>
+                    <div class="filters">
+                        <select id="taskFilter" class="filter-select">
+                            <option value="all">All Tasks</option>
+                            <option value="pending">Pending</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                        <input type="text" id="taskSearch" class="filter-input" placeholder="Search tasks...">
+                    </div>
+                    <div class="task-grid" id="taskList">
+                        <p class="no-tasks" id="noTasksMessage">No tasks found. Start by adding a new task!</p>
+                        <!-- Task items will be dynamically loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Add Task Modal -->
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="closeTaskModal">&times;</span>
+            <h2 id="modalTitle">Add New Task</h2>
+            <form id="taskForm">
+                <input type="hidden" id="taskId">
+                <div class="form-group">
+                    <label for="taskTitle">Task Title</label>
+                    <input type="text" id="taskTitle" required placeholder="e.g., Finish project report">
+                    <p class="error-message" id="taskTitleError"></p>
+                </div>
+                <div class="form-group">
+                    <label for="taskDescription">Description (Optional)</label>
+                    <textarea id="taskDescription" rows="4" placeholder="Briefly describe your task"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="taskDueDate">Due Date (Optional)</label>
+                    <input type="date" id="taskDueDate">
+                </div>
+                <div class="form-group">
+                    <label for="taskStatus">Status</label>
+                    <select id="taskStatus">
+                        <option value="pending">Pending</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div>
+                <div class="modal-message error-message" id="modalError"></div>
+                <button type="submit" class="btn btn-primary btn-block" id="saveTaskButton">
+                    <span id="saveButtonText">Add Task</span>
+                    <i class="fas fa-spinner fa-spin loading-spinner" id="saveTaskSpinner" style="display: none;"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../public/index.html" class="logo">
+                        <span class="logo-icon"><i class="fas fa-check-double"></i></span>
+                        TaskMaster Pro
+                    </a>
+                    <p>&copy; 2023 TaskMaster Pro. All rights reserved.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../public/index.html">Home</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="settings.html">Settings</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <script src="../public/js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
